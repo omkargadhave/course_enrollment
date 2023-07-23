@@ -1,0 +1,26 @@
+@model List<Student>  <!-- Update the model to List<Student> -->
+
+<h2>Course Registration</h2>
+
+<form method="post" action="/Registration/Register">
+    <label for="studentId">Student:</label>
+    <select name="studentId" id="studentId">
+        <option value="">Select a student</option>
+        @foreach (var student in Model)  <!-- Iterate over students, not courses -->
+        {
+            <option value="@student.Id">@student.Name</option>  <!-- Access the Name property of the Student model -->
+        }
+    </select>
+    <br />
+
+    <label for="selectedCourses">Select Courses:</label>
+    <select name="selectedCourses" id="selectedCourses" multiple>
+        @foreach (var course in Model)  <!-- Iterate over courses, not students -->
+        {
+            <option value="@course.Id">@course.Title</option>
+        }
+    </select>
+    <br />
+
+    <input type="submit" value="Register" />
+</form>
